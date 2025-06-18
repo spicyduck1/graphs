@@ -1,0 +1,23 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+}
+
+#network {
+  width: 50%;
+  height: 500px;
+  background-color: red;
+}
+
+#algo-container {
+  width: 100px;
+  height: 100px;
+  background-color: green;
+}
