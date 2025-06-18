@@ -12,7 +12,7 @@
         ]);
 
         // Het netwerkobject maken
-        var container = document.getElementById('mijnNetwerk');
+        var container = document.getElementById('network');
         var data = {
             nodes: nodes,
             edges: edges
