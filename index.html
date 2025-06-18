@@ -2,11 +2,52 @@
 <html lang="nl">
 <head>
     <meta charset="UTF-8">
-    <title>Mijn Website</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Een eenvoudige pagina met jQuery en vis.js">
+    <meta name="author" content="Jouw Naam">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Mijn Website met jQuery en vis.js</title>
+
+    <!-- CSS Link -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Vis.js CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/vis-network/styles/vis-network.min.css" rel="stylesheet" type="text/css" />
+
+    <!-- JavaScript Links -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vis-network/"></script>
 </head>
 <body>
     <h1>Welkom op mijn website!</h1>
-    <p>Dit is een eenvoudige pagina.</p>
-    <p>Hoe lang duurt dit</p>
+    <p>Dit is een simpele pagina met jQuery en vis.js.</p>
+
+    <!-- Een Div voor vis.js netwerk visualisatie -->
+    <div id="network"></div>
+
+    <!-- JavaScript Code -->
+    <script>
+        // Voorbeeld jQuery code
+        $(document).ready(function() {
+            console.log("jQuery is geladen!");
+
+            // Vis.js netwerk visualisatie
+            var nodes = new vis.DataSet([
+                {id: 1, label: 'Node 1'},
+                {id: 2, label: 'Node 2'},
+                {id: 3, label: 'Node 3'}
+            ]);
+
+            var edges = new vis.DataSet([
+                {from: 1, to: 2},
+                {from: 1, to: 3}
+            ]);
+
+            var container = document.getElementById('network');
+            var data = { nodes: nodes, edges: edges };
+            var options = {};
+            var network = new vis.Network(container, data, options);
+        });
+    </script>
 </body>
 </html>
