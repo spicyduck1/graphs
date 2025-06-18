@@ -3,27 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Een eenvoudige pagina met jQuery en vis.js">
+    <meta name="description" content="Een eenvoudige netwerk visualisatie met vis.js">
     <meta name="author" content="Jouw Naam">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Mijn Website met jQuery en vis.js</title>
-
-    <!-- CSS Link -->
-    <link rel="stylesheet" href="style.css">
+    <title>Netwerk Visualisatie met vis.js</title>
 
     <!-- Vis.js CSS -->
     <link href="https://cdn.jsdelivr.net/npm/vis-network/styles/vis-network.min.css" rel="stylesheet" type="text/css" />
 
-    <!-- JavaScript Links -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vis-network/"></script>
-    <script src="main.js" defer></script>
+    <style>
+        /* Zorg dat het netwerk zichtbaar is */
+        #network {
+            width: 100%;
+            height: 500px;
+            border: 1px solid lightgray;
+        }
+    </style>
 </head>
 <body>
-    <h1>Welkom op mijn website!</h1>
-    <p>Dit is een simpele pagina met jQuery en vis.js.</p>
+    <h1>Netwerk Visualisatie</h1>
+    <p>Een eenvoudig netwerk gemaakt met vis.js.</p>
 
-    <!-- Een Div voor vis.js netwerk visualisatie -->
-     <div id="network" style="height: 400px;"></div>
+    <!-- Div voor vis.js netwerk -->
+    <div id="network"></div>
+
+    <!-- jQuery en Vis.js JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vis-network/"></script>
+
+    <script>
+        // Wacht tot het document klaar is met jQuery
+        $(document).ready(function() {
+            console.log("jQuery en vis.js zijn geladen!");
+
+            // Definieer de knooppunten (nodes)
+            var nodes = new vis.DataSet([
+                {id: 1, label: 'Node 1'},
+                {id: 2, label: 'Node 2'},
+                {id: 3, label: 'Node 3'},
+                {id: 4, label: 'Node 4'}
+            ]);
+
+            // Definieer de verbindingen (edges)
+            var edges = new vis.DataSet([
+                {from: 1, to: 2},
+                {from: 1, to: 3},
+                {from: 2, to: 4},
+                {from: 3, to: 4}
+            ]);
+
+            // De container waar het netwerk moet komen
+            var container = document.getElementById('network');
+
+            // Data voor het netwerk
+            var data = { nodes: nodes, edges: edges };
+
+            // Opties voor het netwerk
+            var options = {
+                nodes: {
+                    shape: 'dot',  // Vorm van de knooppunten
+                    size: 20       // Grootte van de knooppunten
+                },
+                edges: {
+                    width: 2       // Dikte van de verbindingen
+                },
+                physics: {
+                    enabled: true  // Zorgt voor beweging (fysica)
+                }
+            };
+
+            // Maak het netwerk aan
+            var network = new vis.Network(container, data, options);
+        });
+    </script>
 </body>
 </html>
